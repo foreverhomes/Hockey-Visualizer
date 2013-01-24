@@ -1,0 +1,59 @@
+<html>
+<head>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="js/d3/d3.v2.js" type="text/javascript"></script>
+<script src="js/stats.js" type="text/javascript"></script>
+<style type="text/css">
+	.axis path,
+.axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-family: sans-serif;
+    font-size: 11px;
+}
+
+circle {
+	box-shadow: 0 0 5px 5px #666
+}
+</style>
+</head>
+<body style="padding: 20px;">
+	<select id="Teams">
+		<option value="ANA">Anaheim</option>
+		<option value="BOS">Boston</option>
+		<option value="BUF">Buffalo</option>
+		<option value="CAL">Calgary</option>
+		<option value="CAR">Carolina</option>
+		<option value="CHI">Chicago</option>
+		<option value="CBJ">Columbus</option>
+		<option value="COL">Colorado</option>
+		<option value="DAL">Dallas</option>
+		<option value="DET">Detroit</option>
+		<option value="EDM">Edmonton</option>
+		<option value="FLA">Florida</option>
+		<option value="LAK">Los Angeles</option>
+		<option value="MIN">Minnesota</option>
+		<option value="MTL">Montreal</option>
+		<option value="NSH">Nashville</option>
+		<option value="NJD">New Jersey</option>
+		<option value="NYI">New York Islanders</option>
+		<option value="NYR">New York Rangers</option>
+		<option value="OTT">Ottawa</option>
+		<option value="PHI">Philadelphia</option>
+		<option value="PHX">Phoenix</option>
+		<option value="PIT">Pittsburgh</option>
+		<option value="STL">St. Louis</option>
+		<option value="SJS">San Jose</option>
+		<option value="TBL">Tampa Bay</option>
+		<option value="TOR">Toronto</option>
+		<option value="VAN">Vancouver</option>
+		<option value="WSH">Washington</option>
+		<option value="WIN">Winnipeg</option>
+	</select>
+	<a href="#" id="filter">Filter</a>
+</body>
+</html>
