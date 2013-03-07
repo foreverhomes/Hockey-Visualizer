@@ -1,13 +1,13 @@
 import json
 import urllib2
-from BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
 
 soup = BeautifulSoup(urllib2.urlopen('http://www.behindthenet.ca/nhl_statistics.php?c=0+1+3+5+4+6+7+8+13+14+29+30+32+33+34+45+46+63+67&ds=30&f5=#snip=f').read())
 
 headersScrape = soup.find("tr", { "class" : "col-title-row" }).findAll("td")
-headers = [];
+headers = []
 for col in headersScrape:
-	headers.append(col['class']);
+	headers.append(col['class'][0]);
  
 playersScrape = soup.find("tbody", {"class" : "players"}).findAll("tr")
 counter = 0

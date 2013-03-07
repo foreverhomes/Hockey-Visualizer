@@ -42,7 +42,7 @@ $(document).ready(function() {
 
 	         svg.select("#main").append("div").attr("class", "axis-label").text("Offensive zone starts (%)").attr("x", 20).attr("y", (h - padding)/2 - 30);
 	         
-	d3.csv("PlayerUsageCharts.csv", function(dataset) {
+	d3.json("json/5v5.json", function(dataset) {
 		
 		d3.select("#filter")
         .on("click", function() {
@@ -54,7 +54,7 @@ $(document).ready(function() {
 			
 			svg.selectAll("g")
 				.data(dataset.filter(function(d){
-					return d.Team == selection;
+					return d.team == selection;
 				}))
 				.enter()
 				.append("g")
@@ -68,16 +68,16 @@ $(document).ready(function() {
 					return i;
 				})
 				.attr("cx", function(d) {
-					return xScale(d.OZ);
+					return xScale(d.sozone);
 				})
 				.attr("cy", function(d) {
-					return yScale(d.RQoC);
+					return yScale(d.rcqoc);
 				})
 				.attr("r", function(d) {
-					return (rScale(parseFloat(d.RelC)));
+					return (rScale(parseFloat(d.crel)));
 				})
 				.attr("fill", function(d) {
-					return cScale(parseFloat(d.RelC));
+					return cScale(parseFloat(d.crel));
 				})
 				.style("fill-opacity", ".325");
 			
@@ -108,13 +108,13 @@ $(document).ready(function() {
 			svg.selectAll("g")
 			   .append("text")
 			   .text(function(d) {
-			   		return d.FirstName + ' ' + d.LastName + ' (' + d.RelC + ')';
+			   		return d.player + ' (' + d.crel + ')';
 			   })
 			   .attr("x", function(d) {
-					return xScale(d.OZ);
+					return xScale(d.sozone);
 				})
 				.attr("y", function(d) {
-					return yScale(d.RQoC);
+					return yScale(d.rcqoc);
 				})
 			   .attr("font-family", "sans-serif")
 			   .attr("font-size", "11px")
