@@ -36,6 +36,10 @@ html, button, input, select, textarea { font-family: sans-serif; color: #222; }
 
 body { margin: 0; font-size: 1em; line-height: 1.4; font-family: 'Sanchez-Regular', 'Times New Roman', serif; }
 
+h1, h2, h3, h4 {
+	font-family: 'Sanchez-Regular' !important;
+}
+
 @font-face {font-family: 'Sanchez-Regular';src: url('webfonts/20F2A0_0_0.eot');src: url('webfonts/20F2A0_0_0.eot?#iefix') format('embedded-opentype'),url('webfonts/20F2A0_0_0.woff') format('woff'),url('webfonts/20F2A0_0_0.ttf') format('truetype');}
  
   
