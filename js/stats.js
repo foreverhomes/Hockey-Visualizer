@@ -9,11 +9,11 @@ $(document).ready(function() {
         	.attr("width", w);
 
         var xScale = d3.scale.linear()
-    		.domain([40,65])
+    		.domain([30,75])
     		.range([0, w - (padding *2)]);
     
         var yScale = d3.scale.linear()
-        	.domain([-2, 2])
+        	.domain([-3, 3])
         	.range([h  - (padding *2),0]);
         	
         var cScale = d3.scale.linear()
@@ -50,11 +50,19 @@ $(document).ready(function() {
         	svg.selectAll("text").remove();
         	svg.selectAll("g").remove();
 			
-			var selection = $('#Teams').val(); 
+			var selection = $('#Teams').val();
 			
+			var position = $('#Pos').val();
+
 			svg.selectAll("g")
 				.data(dataset.filter(function(d){
-					return d.team == selection;
+					if(position == 'ALL') {
+						return d.team == selection;
+					}
+					else {
+						return (d.team == selection && d.pos == position);
+					}
+					
 				}))
 				.enter()
 				.append("g")
