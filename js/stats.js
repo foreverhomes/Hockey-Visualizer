@@ -46,7 +46,7 @@ $(document).ready(function() {
 		
 		d3.select("#filter").on("click", function() {
 
-        	svg.selectAll("text").transition().duration(500).attr("opacity",0).remove();
+        	svg.selectAll("g.player text").transition().duration(500).attr("opacity",0).remove();
 			
 			var selection = $('#Teams').val();
 			
@@ -99,7 +99,7 @@ $(document).ready(function() {
 					return yScale(d.rcqoc);
 				})
 
-			var group = svg.selectAll("group.player")
+			var group = svg.selectAll("g.player")
 				.data(dataset.filter(function(d){
 					if(position == 'ALL') {
 						return d.team == selection && d.crel > -15;
