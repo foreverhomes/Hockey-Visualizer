@@ -1,4 +1,4 @@
-		
+
 $(document).ready(function() {
 	var h = 700;
     var w = $(window).width() - 40;
@@ -25,7 +25,7 @@ $(document).ready(function() {
 		.range([10, 70]); 
 		
 	svg.append("g")
-	    .attr("class", "axis")
+	    .attr("class", "x axis")
 	    .attr("transform", "translate(" + padding + "," + (h - padding)/2 + ")")
     	.call(d3.svg.axis()
         .scale(xScale)
@@ -33,7 +33,7 @@ $(document).ready(function() {
         .ticks(7));
     
     svg.append("g")
-    	.attr("class", "axis")
+    	.attr("class", "y axis")
 	    .attr("transform", "translate(" + padding + "," + padding + ")")
     	.call(d3.svg.axis()
     	.scale(yScale)
@@ -46,7 +46,11 @@ $(document).ready(function() {
 		
 		d3.select("#filter").on("click", function() {
 
-        	svg.selectAll("text").transition().duration(500).attr("opacity",0).remove();
+        	// var text = svg.selectAll("text.name");
+        	// //.transition().duration(500).attr("opacity",0).remove();
+        	// console.log(text);
+
+        	// text.remove();
 			
 			var selection = $('#Teams').val();
 			
@@ -99,7 +103,7 @@ $(document).ready(function() {
 					return yScale(d.rcqoc);
 				})
 
-			var group = svg.selectAll("group.player")
+			var group = svg.selectAll("g.player")
 				.data(dataset.filter(function(d){
 					if(position == 'ALL') {
 						return d.team == selection && d.crel > -15;
@@ -109,24 +113,27 @@ $(document).ready(function() {
 					}
 					
 				}));
+				
+			//group.selectAll("g.player text").transition().duration(500).attr("opacity",0).remove();
 
 			group.enter().append("g").attr("class", function(d, i) {
 					return "player " + "player-"+i;
 				})
-			.append("text")
-			   .text(function(d) {
+				.append("text")
+				.text(function(d) {
 			   		return d.player + ' (' + d.crel + ')';
-			   })
-			   .attr("x", function(d) {
+				})
+				.attr("x", function(d) {
 					return xScale(d.sozone);
 				})
 				.attr("y", function(d) {
 					return yScale(d.rcqoc);
 				})
-			   .attr("font-family", "sans-serif")
-			   .attr("font-size", "11px")
-			   .attr("fill", "#666")
-			   .style("fill-opacity", ".1");
+				.attr("class", "name")
+				.attr("font-family", "sans-serif")
+				.attr("font-size", "11px")
+				.attr("fill", "#666")
+				.style("fill-opacity", ".1");
 
 			// var text = group.select("text")
 
@@ -137,6 +144,10 @@ $(document).ready(function() {
 				.attr("y", function(d) {
 					return yScale(d.rcqoc);
 				})
+				.text(function(d) {
+			   		return d.player + ' (' + d.crel + ')';
+				})
+
 
 			group.exit().transition().duration(500).attr("opacity",0).remove();
 			
@@ -169,6 +180,7 @@ $(document).ready(function() {
 						.attr("fill", "#666")
 						.style("fill-opacity", ".1");
 				});
+
 	       
         })
     })
