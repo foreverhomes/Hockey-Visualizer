@@ -133,7 +133,7 @@ $(document).ready(function() {
 				.attr("font-family", "sans-serif")
 				.attr("font-size", "11px")
 				.attr("fill", "#666")
-				.style("fill-opacity", ".1");
+				.style("fill-opacity", ".25");
 
 			// var text = group.select("text")
 
